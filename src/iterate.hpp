@@ -1,9 +1,6 @@
 // -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 4; c-basic-offset: 4; -*-
 
 /*
- * functional++/iterate.hpp
- *
- * @author: Alexander Guinness
  * @version: 0.0.5
  * @license: MIT
  * @date: 9/1/2013 01:55 AM
@@ -16,20 +13,15 @@
 #include <algorithm>
 #include <iterator>
 
-namespace functional
-{
+namespace functional {
 	using uint = std::size_t;
 
-	namespace details
-	{
-		template <typename __container>
-			using value_type = typename __container::value_type
-		;
+	namespace details {
+		template <typename __container> 
+			using value_type = typename __container::value_type;
 
 		template <typename __container, typename __callback =
-			std::function <value_type<__container> (
-				value_type<__container>, value_type<__container>
-			)>
+			std::function <value_type<__container> (value_type<__container>, value_type<__container>)>
 		>
 			using callback = __callback
 		;
@@ -45,9 +37,12 @@ namespace functional
 	 */
 
 	template <typename __container, typename __position, typename __step = uint>
-		static inline __container range(__container &container,
-		__position from, __position to, __step step = 1) noexcept
-		{
+		static inline __container range(
+			__container &container,
+			__position from,
+			__position to,
+			__step step = 1
+		) noexcept {
 			typename std::back_insert_iterator<__container> it = std::back_inserter(container);
 
 			do {
@@ -71,7 +66,7 @@ namespace functional
 	template <typename __container, typename __callback =
 		details::callback<__container>
 	>
-		static inline details::value_type<__container> reduce (
+		static inline details::value_type<__container> reduce(
 			__container &container, __callback &&callback,
 			const details::value_type<__container> &initial = {}
 		) noexcept
@@ -98,8 +93,7 @@ namespace functional
 	template <typename __container, typename __callback =
 		details::callback<__container>
 	>
-		static inline __container each(__container &&container, __callback &&callback) noexcept
-		{
+		static inline __container each(__container &&container, __callback &&callback) noexcept {
 			std::for_each(container.begin(), container.end(), callback);
 
 			return container;
@@ -119,9 +113,9 @@ namespace functional
 	template <typename __container, typename __callback =
 		details::callback<__container>
 	>
-		static inline __container map(__container &container, __callback &&callback) noexcept
-		{
+		static inline __container map(__container &container, __callback &&callback) noexcept {
 			std::transform(container.begin(), container.end(), container.begin(), callback);
+
 			return container;
 		}
 	;
@@ -139,8 +133,7 @@ namespace functional
 	template <typename __container, typename __callback =
 		details::callback<__container>
 	>
-		static inline __container filter(__container &&container, __callback &&callback) noexcept
-		{
+		static inline __container filter(__container &&container, __callback &&callback) noexcept {
 			container.erase(std::remove_if (
 				container.begin(), container.end(), callback), container.end()
 			);
@@ -162,8 +155,7 @@ namespace functional
 	template <typename __container, typename __callback =
 		std::function <bool (details::value_type<__container>)>
 	>
-		static inline bool every (__container &&container, __callback &&callback) noexcept
-		{
+		static inline bool every (__container &&container, __callback &&callback) noexcept {
 			return std::all_of(container.cbegin(), container.cend(), callback);
 		}
 	;
@@ -181,8 +173,7 @@ namespace functional
 	template <typename __container, typename __callback =
 		std::function <bool (details::value_type<__container>)>
 	>
-		static inline bool some (__container &&container, __callback &&callback) noexcept
-		{
+		static inline bool some (__container &&container, __callback &&callback) noexcept {
 			return std::any_of(container.cbegin(), container.cend(), callback);
 		}
 	;
@@ -199,8 +190,7 @@ namespace functional
 	template <typename __container, typename __callback =
 		std::function <bool (details::value_type<__container>)>
 	>
-		static inline bool none (__container &&container, __callback &&callback) noexcept
-		{
+		static inline bool none (__container &&container, __callback &&callback) noexcept {
 			return std::none_of(container.cbegin(), container.cend(), callback);
 		}
 	;
