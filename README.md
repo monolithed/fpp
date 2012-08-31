@@ -1,4 +1,4 @@
-### Deprected, and not suppored sice 2013
+### Deprected, and not suppored since 2012
 
 ### API
  
