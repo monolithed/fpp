@@ -19,7 +19,7 @@
 
 ### Examples
 
-## functional::range(container, from, to, [step]);
+### functional::range(container, from, to, [step]);
 
 ```c++
 /*
@@ -34,7 +34,7 @@
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector_1;
 
 	// Example 1
@@ -71,7 +71,7 @@ int mail () {
 }
 ```
 
-## functional::each(container, callback);
+### functional::each(container, callback);
 
 ```c++
 /*
@@ -88,7 +88,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector = {0, 1, 2, 3, 4};
 
 	functional::each(vector, [](const int value) {
@@ -99,7 +99,7 @@ int mail () {
 }
 ```
 
-## functional::map(container, function);
+### functional::map(container, function);
 
 ```c++
 /*
@@ -113,7 +113,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector = {0, 1, 2, 3, 4};
 
 	functional::map(vector, [](const int value) {
@@ -128,7 +128,7 @@ int mail () {
 }
 ```
 
-## functional::filte (container<T>, function);
+### functional::filte(container<T>, function);
 
 ```c++
 /*
@@ -142,7 +142,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector = {0, 1, 2, 3, 4};
 
 	functional::filter(vector, [](const int value) {
@@ -156,7 +156,7 @@ int mail () {
 }
 ```
 
-## functional::reduce (container <T>, function, [initial]);
+### functional::reduce(container <T>, function, [initial]);
 
 ```c++
 /*
@@ -171,7 +171,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	// Example 1:
 
 	std::vector<int> vector = {0, 1, 2, 3, 4};
@@ -210,7 +210,7 @@ int mail () {
 }
 ```
 
-## functional::every(container<T>, function);
+### functional::every(container<T>, function);
 
 ```c++
 /*
@@ -223,7 +223,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector = {0, 1, 2, 3, 4};
 
 	auto result = functional::every(vector, [](const int value) -> bool {
@@ -236,7 +236,7 @@ int mail () {
 }
 ```
 
-## functional::some(container<T>, function);
+### functional::some(container<T>, function);
 
 ```c++
 /*
@@ -249,7 +249,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector = {0, 1, 2, 3, 4};
 
 	auto result = functional::every(vector, [](const int value) -> bool {
@@ -262,7 +262,7 @@ int mail () {
 }
 ```
 
-## functional::none(container<T>, function);
+### functional::none(container<T>, function);
 
 ```c++
 /*
@@ -275,7 +275,7 @@ int mail () {
 #include <iostream>
 #include "functional++.hpp"
 
-int mail () {
+int main () {
 	std::vector<int> vector = {0, 1, 2, 3, 4};
 
 	auto result = functional::none(vector, [](const int value) -> bool {
@@ -288,6 +288,6 @@ int mail () {
 }
 ```
 
-## License
+### License
 
 * This library is licensed under the MIT license
