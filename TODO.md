@@ -1,0 +1,6 @@
+- functional::every
+- functional::some
+- functional::any
+- functional::range
+- functional::join
+- functional::flatten
