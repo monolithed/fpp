@@ -6,18 +6,17 @@
  * functional::each, functional::map, functional::filter, functional::reduce
  *
  * @author: Alexander Guinness
- * @version: 0.0.1
+ * @version: 0.0.2
  * @license: MIT
  * @date: 9/1/2013 01:55 AM
  */
 
-#ifndef __NOTT_FUNCTIONAL__
-#define __NOTT_FUNCTIONAL__
+#ifndef __FUNCTIONAL_PP__
+#define __FUNCTIONAL_PP__
 
 #include <functional>
 #include <algorithm>
 #include <iterator>
-#include <numeric>
 
 namespace functional
 {
@@ -177,7 +176,7 @@ namespace functional
 			current = callback(current, *it++);
 
 		return current;
-	}
+	};
 }
 
 #endif
