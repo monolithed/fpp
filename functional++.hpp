@@ -6,7 +6,7 @@
  * functional::each, functional::map, functional::filter, functional::reduce
  *
  * @author: Alexander Guinness
- * @version: 0.0.2
+ * @version: 0.0.3
  * @license: MIT
  * @date: 9/1/2013 01:55 AM
  */
@@ -163,14 +163,13 @@ namespace functional
 	 * result; // 0, 1, 2, 3, 4
 	 */
 
-	template <typename __container, typename __callback = details::callback<__container>,
-		typename __initial = details::value_type<__container>
-	>
-	static inline __initial
-	reduce(__container &container, __callback &&callback, __initial &&initial = {}) noexcept
+	template <typename __container, typename __callback = details::callback<__container>>
+	static inline details::value_type<__container> reduce (
+		__container &container, __callback &&callback, const details::value_type<__container> &initial = {}
+	) noexcept
 	{
-		auto it = container.begin();
-		auto current = initial;
+		typename __container::const_iterator it = container.begin();
+		details::value_type<__container> current = initial;
 
 		while (it != container.end())
 			current = callback(current, *it++);

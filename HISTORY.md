@@ -3,3 +3,6 @@
 
 # 0.0.2  / 2013-01-10
 * [Critical] Fixed initial value for the functional::reduce
+
+# 0.0.3  / 2013-01-10
+* [Critical] Fixed return value for the functional::reduce
