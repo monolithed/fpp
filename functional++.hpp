@@ -168,7 +168,7 @@ namespace functional
 		typename __initial = details::value_type<__container>
 	>
 	static inline __initial
-	reduce(__container &container, __callback &&callback, __initial initial = {}) noexcept
+	reduce(__container &container, __callback &&callback, __initial &&initial = {}) noexcept
 	{
 		auto it = container.begin();
 		auto current = initial;
