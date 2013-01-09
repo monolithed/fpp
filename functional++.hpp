@@ -119,7 +119,7 @@ namespace functional
 
 
 	/*
-	 * functional::reduce ( container, function, [ init ] );
+	 * functional::reduce ( container, function, [ initial ] );
 	 *
 	 * Apply a function against an accumulator and each value of the sequence container (from left-to-right)
 	 * as to reduce it to a single value.
@@ -133,7 +133,7 @@ namespace functional
 	 *
 	 * @returns { container<T>::value_type }
 	 *
-	 * Example:
+	 * Example 1:
 	 * std::vector<int> vector = {0, 1, 2, 3, 4};
 	 *
 	 * int result = functional::reduce(vector, [](const int current, const int prev) -> int {
@@ -141,18 +141,37 @@ namespace functional
 	 * });
 	 *
 	 * result; // 10
+	 *
+	 * Example 2:
+	 *
+	 * std::vector<int> vector = {0, 1, 2, 3, 4};
+	 *
+	 * int result = functional::reduce(vector, [](const int current, const int prev) -> int {
+	 *     return current + next;
+	 * }, 10);
+	 *
+	 * result; // 20
+	 *
+	 * Example 3:
+	 *
+	 * std::vector<std::string> vector = {"0", "1", "2", "3", "4"};
+	 *
+	 * int result = functional::reduce(vector, [](const std::string current, const std::string prev) ->
+	 * std::string {
+	 *     return current + next;
+	 * });
+	 *
+	 * result; // 0, 1, 2, 3, 4
 	 */
 
-	template <typename __container, typename __callback = details::callback<__container>>
-	static inline details::value_type<__container>
-	reduce(__container &container, __callback &&callback, const uint &init = 0) noexcept
+	template <typename __container, typename __callback = details::callback<__container>,
+		typename __initial = details::value_type<__container>
+	>
+	static inline __initial
+	reduce(__container &container, __callback &&callback, __initial initial = {}) noexcept
 	{
 		auto it = container.begin();
-
-		if (init > 0)
-			std::advance(it, init);
-
-		auto current = *it;
+		auto current = initial;
 
 		while (it != container.end())
 			current = callback(current, *it++);
@@ -162,5 +181,3 @@ namespace functional
 }
 
 #endif
-
-
