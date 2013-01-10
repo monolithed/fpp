@@ -6,3 +6,6 @@
 
 # 0.0.3  / 2013-01-10
 * [Critical] Fixed return value for the functional::reduce
+
+# 0.0.4  / 2013-01-10
+* [Feature] functional::every, functional::some, functional::none

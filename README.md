@@ -5,13 +5,13 @@
 * **functional::map** <br />
 * **functional::filter** <br />
 * **functional::reduce** <br />
+* **functional::every** <br />
+* **functional::some** <br />
+* **functional::none** <br />
 
 
 ## TODO
 
-* **functional::every** <br />
-* **functional::some** <br />
-* **functional::any** <br />
 * **functional::range** <br />
 * **functional::join** <br />
 * **functional::flatten** <br />

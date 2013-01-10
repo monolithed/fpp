@@ -3,10 +3,8 @@
 /*
  * functional++
  *
- * functional::each, functional::map, functional::filter, functional::reduce
- *
  * @author: Alexander Guinness
- * @version: 0.0.3
+ * @version: 0.0.4
  * @license: MIT
  * @date: 9/1/2013 01:55 AM
  */
@@ -168,13 +166,102 @@ namespace functional
 		__container &container, __callback &&callback, const details::value_type<__container> &initial = {}
 	) noexcept
 	{
-		typename __container::const_iterator it = container.begin();
+		typename __container::const_iterator it = container.cbegin();
 		details::value_type<__container> current = initial;
 
-		while (it != container.end())
+		while (it != container.cend())
 			current = callback(current, *it++);
 
 		return current;
+	};
+
+
+	/*
+	 * functional::every ( container, function );
+	 *
+	 * Tests whether all elements in the container pass the test implemented by the provided function.
+	 *
+	 * { container } - STL-container
+	 * { callback }  - Function to execute on each value in the sequence container, taking one argument:
+	 *   value - The current element being processed in the sequence container.
+	 *
+	 * @returns { bool }
+	 *
+	 * Example:
+	 * std::vector<bool> vector = {0, 1, 2, 3, 4};
+	 *
+	 * functional::every(vector, [](const int value) -> bool {
+	 *    return value == 1;
+	 * });
+	 *
+	 * result; // false
+	 */
+
+	template <typename __container, typename __callback =
+		std::function <bool (details::value_type<__container>)>
+	>
+	static inline bool every (__container &&container, __callback &&callback) noexcept
+	{
+		return std::all_of(container.cbegin(), container.cend(), callback);
+	};
+
+
+	/*
+	 * functional::some ( container, function );
+	 *
+	 * Tests whether some element in the container passes the test implemented by the provided function.
+	 *
+	 * { container } - STL-container
+	 * { callback }  - Function to execute on each value in the sequence container, taking one argument:
+	 *   value - The current element being processed in the sequence container.
+	 *
+	 * @returns { bool }
+	 *
+	 * Example:
+	 * std::vector<bool> vector = {0, 1, 2, 3, 4};
+	 *
+	 * functional::every(vector, [](const int value) -> bool {
+	 *    return value == 1;
+	 * });
+	 *
+	 * result; // false
+	 */
+
+	template <typename __container, typename __callback =
+		std::function <bool (details::value_type<__container>)>
+	>
+	static inline bool some (__container &&container, __callback &&callback) noexcept
+	{
+		return std::any_of(container.cbegin(), container.cend(), callback);
+	};
+
+	/*
+	 * functional::some ( container, function );
+	 *
+	 * Tests whether none element in the container passes the test implemented by the provided function.
+	 *
+	 * { container } - STL-container
+	 * { callback }  - Function to execute on each value in the sequence container, taking one argument:
+	 *   value - The current element being processed in the sequence container.
+	 *
+	 * @returns { bool }
+	 *
+	 * Example:
+	 * std::vector<bool> vector = {0, 1, 2, 3, 4};
+	 *
+	 * functional::every(vector, [](const int value) -> bool {
+	 *    return value == 5;
+	 * });
+	 *
+	 * result; // true
+	 */
+
+	template <typename __container, typename __callback =
+		std::function <bool (details::value_type<__container>)>
+	>
+	static inline bool none (__container &&container, __callback &&callback) noexcept
+	{
+		return std::none_of(container.cbegin(), container.cend(), callback);
 	};
 }
 
