@@ -16,6 +16,9 @@
 * **functional::join** <br />
 * **functional::flatten** <br />
 
+
+## [DOCUMENTATION] (https://github.com/monolithed/functional--/wiki/API)
+
 ##.
 
 * Functional++ is licensed under the MIT (MIT_LICENSE.txt) license
