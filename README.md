@@ -1,6 +1,7 @@
 # Functional++
 
 
+* **functional::range** <br />
 * **functional::each** <br />
 * **functional::map** <br />
 * **functional::filter** <br />
@@ -12,9 +13,11 @@
 
 ## TODO
 
-* **functional::range** <br />
+* **functional::xrange** <br />
 * **functional::join** <br />
 * **functional::flatten** <br />
+* **functional::fill** <br />
+
 
 
 ## [DOCUMENTATION] (https://github.com/monolithed/functional--/wiki/API)

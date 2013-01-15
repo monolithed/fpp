@@ -4,7 +4,7 @@
  * functional++
  *
  * @author: Alexander Guinness
- * @version: 0.0.4
+ * @version: 0.0.5
  * @license: MIT
  * @date: 9/1/2013 01:55 AM
  */
@@ -34,6 +34,57 @@ namespace functional
 			using callback = __callback
 		;
 	}
+
+	/*
+	 * functional::range ( container, from, to, [ step ] );
+	 *
+	 * Generates a sequence of numbers or characters.
+	 * The last parameter is optional to iterate by step.
+	 *
+	 * @returns { container<T> }
+	 */
+
+	template <typename __container, typename __position, typename __step = uint>
+		static inline __container range(__container &container,
+		__position from, __position to, __step step = 1) noexcept
+		{
+			typename std::back_insert_iterator<__container> it = std::back_inserter(container);
+
+			do
+				*it++ = from;
+			while ((from += step) <= to);
+
+			return container;
+		}
+	;
+
+	/*
+	 * functional::reduce ( container, function, [, initial ] );
+	 *
+	 * Apply a function against an accumulator and each value of the sequence container (from left-to-right)
+	 * as to reduce it to a single value.
+	 *
+	 * @returns { container<T>::value_type }
+	 */
+
+	template <typename __container, typename __callback =
+		details::callback<__container>
+	>
+		static inline details::value_type<__container> reduce (
+			__container &container, __callback &&callback,
+			const details::value_type<__container> &initial = {}
+		) noexcept
+		{
+			typename __container::const_iterator it = container.cbegin();
+			details::value_type<__container> current = initial;
+
+			while (it != container.cend())
+				current = callback(current, *it++);
+
+			return current;
+		}
+	;
+
 
 	/*
 	 * functional::each ( container<T>, function );
@@ -94,33 +145,6 @@ namespace functional
 			);
 
 			return container;
-		}
-	;
-
-
-	/*
-	 * functional::reduce ( container, function, [, initial ] );
-	 *
-	 * Apply a function against an accumulator and each value of the sequence container (from left-to-right)
-	 * as to reduce it to a single value.
-	 *
-	 * @returns { container<T>::value_type }
-	 */
-
-	template <typename __container, typename __callback =
-		details::callback<__container>
-	>
-		static inline details::value_type<__container> reduce (
-			__container &container, __callback &&callback, const details::value_type<__container> &initial = {}
-		) noexcept
-		{
-			typename __container::const_iterator it = container.cbegin();
-			details::value_type<__container> current = initial;
-
-			while (it != container.cend())
-				current = callback(current, *it++);
-
-			return current;
 		}
 	;
 
