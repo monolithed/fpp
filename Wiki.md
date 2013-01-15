@@ -1,3 +1,61 @@
+## functional::range ( container, from, to, [ step ] );
+
+```c++
+/*
+ * Generates a sequence of numbers or characters.
+ * The last parameter is optional to iterate by step.
+ *
+ * { container } - STL-container
+ * { int | char }  - from
+ * { int | char }  - to
+ * { int } - step
+ *
+ * @returns { container<T> }
+ *
+ */
+
+
+#include <vector>
+#include <iostream>
+#include "functional++.hpp"
+
+int mail () {
+	std::vector<int> vector_1;
+
+	// Example 1
+	auto result_1 = functional::range(vector_1, 1, 5);
+
+	for (auto value: result_1)
+		std::cout << value << std::endl; // 1, 2, 3, 4, 5
+
+
+	// Example 2
+	auto result_1 = functional::range(vector_1, 1, 5, 2);
+
+	for (auto value: result_1)
+		std::cout << vector_1 << std::endl; // 2, 4
+
+
+	std::vector<char> vector_2;
+
+	// Example 3
+	auto result_2 = functional::range(vector_2, 'a', 'e');
+
+	for (auto value: result_2)
+		std::cout << value << std::endl; // a, b, c, d, e
+
+
+	// Example 4
+	auto result_2 = functional::range(vector_2, 'a', 'e', 2);
+
+	for (auto value: result_2)
+		std::cout << value << std::endl; // a, c, e
+
+	return 0;
+}
+```
+
+
 ## functional::each ( container, function );
 
 ```c++
