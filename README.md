@@ -36,7 +36,7 @@
 * **functional::fill** <br />
 
 
-## [DOCUMENTATION] (https://github.com/monolithed/functional--/wiki/API)
+## [DOCUMENTATION] (https://github.com/monolithed/functional--/wiki/Documentation)
 
 ##.
 
