@@ -1,7 +1,7 @@
 // -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 4; c-basic-offset: 4; -*-
 
 /*
- * functional++
+ * functional++/iterate.hpp
  *
  * @author: Alexander Guinness
  * @version: 0.0.5
@@ -9,8 +9,8 @@
  * @date: 9/1/2013 01:55 AM
  */
 
-#ifndef __FUNCTIONAL_PP__
-#define __FUNCTIONAL_PP__
+#ifndef __FUNCTIONAL_PP_ITERATE__
+#define __FUNCTIONAL_PP_ITERATE__
 
 #include <functional>
 #include <algorithm>
@@ -50,8 +50,9 @@ namespace functional
 		{
 			typename std::back_insert_iterator<__container> it = std::back_inserter(container);
 
-			do
+			do {
 				*it++ = from;
+			}
 			while ((from += step) <= to);
 
 			return container;
