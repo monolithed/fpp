@@ -6,7 +6,6 @@
 * functional::is_container<T>::value;
 * functional<T>::of(value);
 *
-* @author: Alexander Guinness
 * @version: 0.0.1
 * @license: MIT
 * @date: 26/11/2012 04:18 PM
