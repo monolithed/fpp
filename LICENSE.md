@@ -1,4 +1,4 @@
-Copyright 2013, Alexander Guinness <monolithed@gmail.com>
+Copyright 2013, AA
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
