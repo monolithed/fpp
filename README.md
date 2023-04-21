@@ -1,4 +1,4 @@
-# Functional++
+# functionalpp
 
 
 ### functional++/iterate.hpp
@@ -36,10 +36,6 @@
 * **functional::fill** <br />
 
 
-## [DOCUMENTATION] (https://github.com/monolithed/functional--/wiki/Documentation)
+## License
 
-##.
-
-* Functional++ is licensed under the MIT (MIT_LICENSE.txt) license
-
-* Copyright (c) 2013 [Alexander Guinness] (https://github.com/monolithed)
+* This library is licensed under the MIT license
